@@ -1,12 +1,17 @@
-% ucalgary-poster.sty
-% provides University of Calgary branding for tikzposter
+% durhamuni-poster.sty
+% theme inspired by University of Calgary branding for tikzposter
 % https://ctan.org/pkg/tikzposter?lang=en
 %
+% Dmitry Nikolaenko
+% dmitry.nikolaenko@durham.ac.uk
+% https://github.com/parnumeric/ucalgary-poster/tree/durham
+%
+% Original author of ucalgary-poster.sty
 % Richard Zach
 % rzach@ucalgary.ca
 % Source/most recent version at https://github.com/rzach/ucalgary-poster
 
-\ProvidesPackage{ucalgary-poster}[2017/10/20 University of Calgary tikzposter theme]
+\ProvidesPackage{durhamuni-poster}[2024/05/03 Durham University tikzposter theme]
 
 % tikzposter loads the geometry package, so you can use \geometry to
 % set an arbitrary size. But tikzposter computes dimension when the
@@ -28,8 +33,8 @@
 % redefine \title command to set title in uppercase
 \def\title#1{\gdef\@title{\scalebox{\TP@titletextscale}{\uppercase{#1}}}}
 
-% use the vertical UCalgary logo with white wordmark
-\titlegraphic{\includegraphics[width=.1\textwidth]{uc-vert-cmyk-white-text.pdf}}
+% use the vertical Durham Uni logo with white wordmark
+\titlegraphic{\includegraphics[width=.15\textwidth]{OfficialARC448px.png}}
 
 % define a block style with simple square corners and thin borders
 \defineblockstyle{Square}{
@@ -48,12 +53,14 @@
   \end{scope}
 }
 
-% define a color style with UCalgary as per
-% https://www.ucalgary.ca/brand/identity-standards
-\definecolorstyle{UCalgary} {
-\definecolor{colorOne}{RGB}{227,39,38} % UCalgary primary red
-\definecolor{colorTwo}{RGB}{181,190,53} % UCalgary accent green
-\definecolor{colorThree}{RGB}{205,206,198} % UCalgary warm grey
+% define a color style with DurhamUni as per
+% https://www.dur.ac.uk/brand/local/logos/
+\definecolorstyle{DurhamUni} {
+\definecolor{colorOne}{RGB}{104,36,109} % DU Core Purple
+\definecolor{colorTwo}{RGB}{255,213,58} % DU Core Yellow
+\definecolor{colorThree}{RGB}{0,174,239} % DU Core Cyan
+\definecolor{colorFour}{RGB}{190,30,45} % DU Core Red
+\definecolor{colorFive}{RGB}{175,169,97} % DU Core Gold
 }{
 % Background Colors
 \colorlet{backgroundcolor}{white}
@@ -83,7 +90,7 @@
 % make the title flush left with the logo more-or-less flush right
 
 \settitle{%
-  \begin{minipage}[b]{.8\textwidth}
+  \begin{minipage}[b]{.77\textwidth}
     \color{titlefgcolor}
     \bfseries
     {\Huge \@title\par}
@@ -176,14 +183,14 @@
 
 % Put everything into a theme
 
-\definelayouttheme{UCalgary}{
+\definelayouttheme{DurhamUni}{
   \usebackgroundstyle{Empty}
   \usetitlestyle{Filled}
   \useblockstyle{Square}
-  \usecolorstyle{UCalgary}
+  \usecolorstyle{DurhamUni}
   \usenotestyle{Sticky}
   \usefooterstyle{Filled}
 }
 
-% Load the UCalgary theme
-\usetheme{UCalgary}
+% Load the DurhamUni theme
+\usetheme{DurhamUni}

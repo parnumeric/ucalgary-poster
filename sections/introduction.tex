@@ -1,0 +1,7 @@
+Peano is a massively parallel PDE solver with hierarchical meshes and adaptive mesh refinement \cite{ref1}. Peano provides a framework for dynamically adaptive
+Cartesian meshes which are traversed based on the Peano space-filling curve. Peano has also the parallel capabilities to exploit the full resources of supercomputers. Peano4 (in its current version 4) is shipped with several specialised extensions which follow Peano4 architecture. These extensions rely on the unified API provided by Peano4.
+
+ExaHyPE2 is one of Peano4 extensions and a software engine for solving systems of first-
+order hyperbolic partial differential equations (PDEs) \cite{REINARZ2020107251} (e.g., in problems of seismology and astrophysics). It provides a generic engine and collection of solvers (such as Finite Volume and ADER-DG) with a unified API.
+
+Swift2 is another Peano4 extension and a software engine for solving astrophysical and cosmological problem by means of Smoothed Particle Hydrodynamics (SPH) method. It integrates the SPH kernels from SWIFT software employing task parallelism with Peano's particle-in-dual-tree concept and its particle toolbox.
