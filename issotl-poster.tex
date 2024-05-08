@@ -6,7 +6,7 @@
 \usepackage{durhamuni-poster}
 
 % Make the size 60 by 42"
-\geometry{paperwidth=60in,paperheight=42in}
+\geometry{paperwidth=841mm,paperheight=1188mm}
 \tpsetpostersize
 
 % Make the body font a bit larger (33pt)
@@ -15,9 +15,12 @@
 % Why not have links?
 \usepackage[hidelinks]{hyperref}
 
+\usepackage{amsmath}
+%\usepackage[colalign]{colalign}
+
 % Title, Author, Institute
 
-\title{Coupling solvers of different projects within Peano}
+\title{Extending Peano4: coupling solvers for systems of PDEs}
 \author{Dmitry Nikolaenko}
 \institute{Durham University}
 
@@ -29,50 +32,103 @@
 % Layout: we use 4 columns, each .25 of textwidth
 \begin{columns}
 
-% First column
-\column{0.33}
+% 1st column
+\column{0.3}
+\input{sections/introduction}
 
-\block{Introduction}{
-    \input{sections/introduction}
-}
+% 2nd column
+\column{0.7}
 
-\block{Motivation}{
+\begin{subcolumns}
+    \subcolumn{0.6}
+    \block{}{
+        \centering
+        \includegraphics[width=0.55\colwidth]{images/architecture-static.png}
+    }
+
+    \subcolumn{0.4}
     \input{sections/motivation}
+\end{subcolumns}
+
+\begin{subcolumns}
+    \subcolumn{0.5}
+    \block{Example problem formulation}{}
+    \block{}{
+        \underline{Hyperbolic problem} for Euler equation:
+
+        \textit{<<Euler system of PDEs>>}
+    }
+    \block{}{
+        \underline{Dirichlet problem} for Poisson equation:
+        \begin{equation*}
+            \begin{cases}
+                \Delta u = -f(x,y) & \text{in } \Omega, \\
+                u = 0 & \text{on } \partial \Omega,
+            \end{cases}
+        \end{equation*}
+    }
+
+    \subcolumn{0.5}
+    \block{General workflow}{
+        (using an example of a Peano application based on \textit{Multgrid} extension):
+        \begin{enumerate}
+            \item Create an \texttt{mghype} Project
+            \item Construct matrices
+            \item Instantiate solvers and add them to the Project
+            \item Configure the Project
+            \item Generate a \texttt{peano4} Project
+        \end{enumerate}
+    }
+\end{subcolumns}
+
+\block{Problem}{
+    Implement a coupling between a hyperbolic solver (provided by \textit{ExaHyPE}) for the Euler equation and an elliptic solver (provided by \textit{Multigrid}) for the Poisson equation.
 }
 
-% Second column
-\column{0.34}
-
-\block{Implementation}{
+\begin{subcolumns}
+    \subcolumn{0.4}
     \input{sections/implementation}
-}
 
-\block{Results}{
-    \input{sections/results}
-}
-
-% Third column
-\column{0.33}
-
-\block{Discussion}{
+    \subcolumn{0.6}
     \input{sections/discussion}
-}
 
-\block{Conclusion}{
-    \input{sections/conclusion}
-}
+\end{subcolumns}
 
-\block{References}{
-%    \bibliographystyle{plain}
+\end{columns}
+
+% Block to hold the horizontal line
+\useblockstyle{NoFrameBlockStyle}
+\block{}{
+    \textcolor{colorThree}{\rule{\linewidth}{1pt}} % Change 1pt to desired thickness
+}
+\useblockstyle{Square}
+
+\begin{columns}
+
+% 1st column
+\column{0.3}
+\input{sections/results}
+
+% 2nd column
+\column{0.35}
+\input{sections/discussion}
+
+% 3rd column
+\column{0.35}
+\block{?}{
+  \begin{minipage}{.7\textwidth}
+    \bibliographystyle{plain}
     \bibliography{biblio}
+    %    Research supported by ...
+  \end{minipage}
 }
 
 \end{columns}
 
 % Footer
-\footer[height=7cm]{
+\footer[height=6cm]{
   % Needs a bit more space for the logos
-  \hspace{1.5cm}
+%  \hspace{0.05cm}
   % Since we have two sponsors, UCalgary brand guidelines say we
   % should use wordmarks not lockups
 %  \begin{minipage}{.5\textwidth}
@@ -82,14 +138,11 @@
 %  \end{minipage}
   \hfill
   \begin{minipage}{.2\textwidth}
-    Research supported by ...
-  \end{minipage}
-  \hfill
-  \begin{minipage}{.25\textwidth}
     \raggedleft \textbf{Contact:}\\
     Dmitry Nikolaenko\\
     dmitry.nikolaenko\@durham.ac.uk
-  \end{minipage}\hspace{1.5cm}
+  \end{minipage}
+  %\hspace{0.05cm}
 }
 
 \end{document}

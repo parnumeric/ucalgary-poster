@@ -53,6 +53,38 @@
   \end{scope}
 }
 
+\defineblockstyle{NoFrameBlockStyle}{
+    titlewidthscale=1, bodywidthscale=1,
+    titleleft,
+    titleoffsetx=0pt, titleoffsety=0pt,
+    bodyoffsetx=0mm, bodyoffsety=1mm,
+    bodyverticalshift=1mm,
+    roundedcorners=5,
+    linewidth=0pt, % This makes the border line invisible
+    titleinnersep=5mm,
+    bodyinnersep=5mm
+}{
+    \draw[color=blockbodybgcolor, fill=blockbodybgcolor, rounded corners=\blockroundedcorners] (blockbody.south west) rectangle (blockbody.north east);
+    \ifBlockHasTitle
+    \draw[color=blocktitlebgcolor, fill=blocktitlebgcolor, rounded corners=\blockroundedcorners] (blocktitle.south west) rectangle (blocktitle.north east);
+    \fi
+}
+
+% Define a new block style
+\defineblockstyle{CompactBlock}{
+    titlewidthscale=1, bodywidthscale=1, titleleft,
+    titleoffsetx=0pt, titleoffsety=0pt, bodyoffsetx=0mm, bodyoffsety=0mm,
+    bodyverticalshift=0mm, roundedcorners=0, linewidth=0.4pt,
+    titleinnersep=5mm, bodyinnersep=5mm
+}{
+    \draw[color=framecolor, fill=blockbodybgcolor,
+    rounded corners=\blockroundedcorners] (blockbody.south west) rectangle (blockbody.north east);
+    \ifBlockHasTitle%
+    \draw[color=framecolor, fill=blocktitlebgcolor,
+    rounded corners=\blockroundedcorners] (blocktitle.south west) rectangle (blocktitle.north east);
+    \fi
+}
+
 % define a color style with DurhamUni as per
 % https://www.dur.ac.uk/brand/local/logos/
 \definecolorstyle{DurhamUni} {
@@ -90,7 +122,7 @@
 % make the title flush left with the logo more-or-less flush right
 
 \settitle{%
-  \begin{minipage}[b]{.77\textwidth}
+  \begin{minipage}[b]{.75\textwidth}
     \color{titlefgcolor}
     \bfseries
     {\Huge \@title\par}
@@ -148,7 +180,7 @@
 % mandatory argument is footer content
 
 \newcommand{\footer}[2][]{% #1 keys
-    \normalsize
+    \footnotesize
     \setkeys{footer}{#1}
 
     % Compute footer position
