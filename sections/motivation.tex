@@ -1,6 +1,9 @@
 \block{Motivation}{
-    %ExaHyPE was originally designed for hyperbolic problems, many applications in science and engineering require the solution of elliptic problems. ExaHyPE 2's implementation is shipped with benchmarks and applications solving problems in computational astrophysics and fluid dynamics.
     \begin{minipage}[t]{\linewidth}
-        The \texttt{peano4} core is written in C++, but an extensive Python API simplifies creating applications by writing a Python script generating all C++ code constituting a Peano4 application. I pick up one extension (\textit{ExaHyPE}, \textit{Multgrid}, etc.) and write my application using the extension's API. I'm interested to use API from several extensions.
+        The Python API simplifies creating applications by writing python scripts within the framework of one Peano extensions.
+        \begin{itemize}
+            \item \textbf{Old approach} Pick one extension suitable for the given problem (reformulate the problem if necessary) and write within it
+            \item \textbf{New approach} Identify parts of the given complex problem suitable for solving by different extensions, implement them each within its extension (e.g. solve hyperbolic equations in \textit{ExaHyPE} and elliptic in \textit{Multigrid}) and generate an application coupling solvers from both
+        \end{itemize}
     \end{minipage}
 }

@@ -53,6 +53,23 @@
   \end{scope}
 }
 
+% define a block style with simple square corners and thin borders
+\defineblockstyle{SquarePurple}{
+    titlewidthscale=1, bodywidthscale=1, titlecenter=false,
+    titleoffsetx=0pt, titleoffsety=0pt, bodyoffsetx=0pt, bodyoffsety=0pt,
+    bodyverticalshift=0pt, roundedcorners=0, linewidth=3pt,
+    titleinnersep=.5cm, bodyinnersep=.5cm
+}{
+    \begin{scope}[line width=\blocklinewidth, rounded corners=\blockroundedcorners]
+        \ifBlockHasTitle %
+        \draw[color=colorOne, fill=colorOne] (blockbody.south west) rectangle (blocktitle.north east);
+        \draw[color=colorOne, fill=colorOne!30!white] (blockbody.south west) rectangle (blockbody.north east);
+        \else
+        \draw[color=colorOne, fill=colorOne!30!white] (blockbody.south west) rectangle (blockbody.north east);
+        \fi
+    \end{scope}
+}
+
 \defineblockstyle{NoFrameBlockStyle}{
     titlewidthscale=1, bodywidthscale=1,
     titleleft,

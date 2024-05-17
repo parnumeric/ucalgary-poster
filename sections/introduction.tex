@@ -1,27 +1,26 @@
 \block{Introduction}{
-    \textbf{Peano} is a massively parallel PDE solver with hierarchical meshes and adaptive mesh refinement \cite{ref1}. Peano provides a \textit{framework} for dynamically \textit{adaptive
-    Cartesian meshes} which are traversed based on the Peano \textit{space-filling curve}. Peano is parallelised and capable of exploiting the full resources of supercomputers. Peano4 (in its current version 4) is shipped with several \textit{specialised extensions} following Peano4 architecture as well as application and benchmarks demonstration  work.
+    \textbf{Peano} is a \textit{framework} for PDE solvers on hierarchical meshes with adaptive mesh refinement \cite{ref1} and provides the mesh management, data storage, distribution and mesh traversal on the Peano \textit{space-filling curve}. Peano is massively parallelised and capable of exploiting the full resources of supercomputers. Its current version 4 is shipped with several \textit{specialised extensions} following Peano architecture as well as applications and benchmarks to demonstrate its work and assess its performance.
     %These extensions rely on the unified API provided by Peano4.
     \vspace{0.5in}
 
-    \textbf{ExaHyPE2} is one of \underline{Peano4 extensions}  for solving systems of first-order hyperbolic partial differential equations (PDEs) \cite{REINARZ2020107251} (e.g., in problems of seismology and astrophysics). It provides a generic engine and collection of solvers (such as finite volume method and higher order ADER discontinuous Galerkin schemes) to solve systems of PDEs.
+    \textbf{ExaHyPE2} is one of \underline{extensions} for solving systems of first-order hyperbolic partial differential equations (PDEs) \cite{REINARZ2020107251} (e.g., in problems of seismology and astrophysics). It provides a generic engine and collection of solvers (such as finite volume method and higher order ADER discontinuous Galerkin schemes) to solve systems of PDEs.
     \vspace{0.5in}
 
-    %\textbf{Swift2} is another \underline{Peano4 extension} for solving astrophysical and cosmological problem by means of Smoothed Particle Hydrodynamics (SPH) method. It integrates the SPH kernels from SWIFT software employing task parallelism with Peano's particle-in-dual-tree concept and its particles toolbox.
+    %\textbf{Swift2} is another \underline{extension} for solving astrophysical problem by means of Smoothed Particle Hydrodynamics (SPH) method. It integrates the SPH kernels from SWIFT software employing task parallelism with Peano's particle-in-dual-tree concept and its particles toolbox.
     %\vspace{0.5in}
 
-    \textbf{Multigrid} is another \underline{Peano4 extension} being developed in collaboration with mathematicians from Bath University. It implements elliptic solvers based on multigrid methods using a hierarchy of discretisations.
+    \textbf{Multigrid} is another \underline{extension} being developed in collaboration with mathematicians from Bath University. It implements elliptic solvers based on multigrid methods using a hierarchy of discretisations.
     \vspace{0.5in}
 
-    Every Peano4 application, including ones based on the above extensions, is a C++ code which follows the unified Peano4 architecture consisting of several layers:
+    Every Peano application, including ones based on the above extensions, is a C++ code which follows the unified Peano architecture consisting of several layers:
     \begin{itemize}
         \item Technical Architecture \texttt{<<tarch>>}
-        \item Peano4 core \texttt{<<peano4>>}
-        \item Various toolboxes, on top of which extensions are built, such as:
-    \begin{itemize}
-        \item \texttt{<<toolbox::blockstructured>>} for blockstructured meshes
-        \item \texttt{<<toolbox::particles>>} for particle management
-        \item \texttt{<<toolbox::loadbalancing>>} for dynamic load balancing
-    \end{itemize}
+        \item Peano core \texttt{<<peano4>>}
+        \item Various toolboxes, on top of which extensions are built, e.g.:
+        \begin{itemize}
+            \item \texttt{<<toolbox::blockstructured>>} for blockstructured meshes
+            \item \texttt{<<toolbox::particles>>} for particle management
+            \item \texttt{<<toolbox::loadbalancing>>} for dynamic load balancing
+        \end{itemize}
     \end{itemize}
 }

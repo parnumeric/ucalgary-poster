@@ -1,7 +1,20 @@
-\block{Solution}{
-    \begin{enumerate}
-        \item Create the 1st \textit{Peano} application from one extension, e.g. \textit{Multigrid}, following the same workflow as above
-        \item Create the 2st \textit{Peano} application from another extension, e.g. \textit{ExaHyPE} in a similar fasion
-        \item Merge the above 2 \texttt{peano4} Projects (the new feature of \textit{Peano4} API)
-    \end{enumerate}
-}
+\begin{subcolumns}
+    \subcolumn{0.4}
+    \block{Solution}{
+        \begin{enumerate}
+            \item Generate the 1st \textit{Peano} application from one extension, e.g. \textit{Multigrid}, following the same workflow as above
+            \item Generate the 2nd \textit{Peano} application from another extension, e.g. \textit{ExaHyPE}, in a similar fashion
+            \item (new feature) Merge the above 2 \texttt{<<peano4>>} Projects coupling solvers from both
+        \end{enumerate}
+    }
+
+    \subcolumn{0.6}
+    \block{Discussion}{
+        In line with the theme proposed for \textit{RSECon24}, this work tries to follow some guiding principles of FAIR for Research Software:
+        \begin{itemize}
+            \item New ways of coupling solvers for different PDE systems are realised which weren't possible before, thus improving \textit{interoperability}. Various Peano extensions, such as \textit{ExaHyPE} and \textit{Multigrid}, are integrated.
+            \item In turn, \textit{reusability} of the extensions as building blocks is enhanced.
+        \end{itemize}
+    }
+
+\end{subcolumns}

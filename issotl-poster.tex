@@ -2,25 +2,10 @@
 
 \documentclass{tikzposter} % Options for format can be included here
 
-% theme inspired by UCalgary-branded poster
-\usepackage{durhamuni-poster}
-
-% Make the size 60 by 42"
-\geometry{paperwidth=841mm,paperheight=1188mm}
-\tpsetpostersize
-
-% Make the body font a bit larger (33pt)
-\def\large{\fontsize{33}{40}\selectfont}
-
-% Why not have links?
-\usepackage[hidelinks]{hyperref}
-
-\usepackage{amsmath}
-%\usepackage[colalign]{colalign}
+\input{packages}
 
 % Title, Author, Institute
-
-\title{Extending Peano4: coupling solvers for systems of PDEs}
+\title{Extending Peano: coupling solvers for systems of PDEs}
 \author{Dmitry Nikolaenko}
 \institute{Durham University}
 
@@ -35,94 +20,34 @@
 % 1st column
 \column{0.3}
 \input{sections/introduction}
+\input{sections/motivation}
 
 % 2nd column
 \column{0.7}
-
-\begin{subcolumns}
-    \subcolumn{0.6}
-    \block{}{
-        \centering
-        \includegraphics[width=0.55\colwidth]{images/architecture-static.png}
-    }
-
-    \subcolumn{0.4}
-    \input{sections/motivation}
-\end{subcolumns}
-
-\begin{subcolumns}
-    \subcolumn{0.5}
-    \block{Example problem formulation}{}
-    \block{}{
-        \underline{Hyperbolic problem} for Euler equation:
-
-        \textit{<<Euler system of PDEs>>}
-    }
-    \block{}{
-        \underline{Dirichlet problem} for Poisson equation:
-        \begin{equation*}
-            \begin{cases}
-                \Delta u = -f(x,y) & \text{in } \Omega, \\
-                u = 0 & \text{on } \partial \Omega,
-            \end{cases}
-        \end{equation*}
-    }
-
-    \subcolumn{0.5}
-    \block{General workflow}{
-        (using an example of a Peano application based on \textit{Multgrid} extension):
-        \begin{enumerate}
-            \item Create an \texttt{mghype} Project
-            \item Construct matrices
-            \item Instantiate solvers and add them to the Project
-            \item Configure the Project
-            \item Generate a \texttt{peano4} Project
-        \end{enumerate}
-    }
-\end{subcolumns}
-
-\block{Problem}{
-    Implement a coupling between a hyperbolic solver (provided by \textit{ExaHyPE}) for the Euler equation and an elliptic solver (provided by \textit{Multigrid}) for the Poisson equation.
-}
-
-\begin{subcolumns}
-    \subcolumn{0.4}
-    \input{sections/implementation}
-
-    \subcolumn{0.6}
-    \input{sections/discussion}
-
-\end{subcolumns}
-
-\end{columns}
+\input{sections/description}
+\input{sections/problem}
+\input{sections/implementation}
 
 % Block to hold the horizontal line
-\useblockstyle{NoFrameBlockStyle}
-\block{}{
-    \textcolor{colorThree}{\rule{\linewidth}{1pt}} % Change 1pt to desired thickness
-}
-\useblockstyle{Square}
-
-\begin{columns}
+%\useblockstyle{NoFrameBlockStyle}
+%\block{}{
+%    \textcolor{colorThree}{\rule{\linewidth}{1pt}} % Change 1pt to desired thickness
+%}
+%\useblockstyle{Square}
 
 % 1st column
-\column{0.3}
 \input{sections/results}
 
 % 2nd column
-\column{0.35}
-\input{sections/discussion}
-
-% 3rd column
-\column{0.35}
-\block{?}{
-  \begin{minipage}{.7\textwidth}
-    \bibliographystyle{plain}
-    \bibliography{biblio}
+\block{References}{
+  \begin{minipage}{0.95\colwidth}
+%    \nocite{*}
+    \printbibliography[heading=none]
+%    \bibliographystyle{plain}
+%    \bibliography{biblio}
     %    Research supported by ...
   \end{minipage}
 }
-
 \end{columns}
 
 % Footer
@@ -146,5 +71,3 @@
 }
 
 \end{document}
-
-
